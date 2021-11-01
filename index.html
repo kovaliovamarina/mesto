@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto</title>
+</head>
+
+<body class="page">
+    <header class="header page__container">
+        <img class="header__logo" src="./images/Vector.png" alt="mesto logo">
+    </header>
+    <main>
+        <section class="profile page__container">
+            <div class="profile__info">
+                <div class="profile__photo"></div>
+                <div class="profile__data">
+                    <h1 class="profile__data-name">Жак-Ив Кусто</h1>
+                    <button class="profile__edit-button"></button>
+                    <p class="profile__data-job">Исследователь океана</p>
+                </div>
+            </div>
+            <button class="profile__add-button">
+            <img class="profile__add-img" src="./images/Add-Button.png" alt="Add-Button">
+         </button>
+        </section>
+
+        <section class="elements page__container">
+
+            <div class="element">
+                <img class="element__img" src="./images/Minsk.jpeg" alt="Minsk">
+                <div class="element__content">
+                    <p class="element__text">Минск</p>
+                    <button class="element__like-button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__img" src="./images/naroch_2.ZwZny.jpg" alt="Naroch">
+                <div class="element__content">
+                    <p class="element__text">Нарочь, Минская область</p>
+                    <button class="element__like-button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__img" src="./images/gomel.jpg" alt="Gomel">
+                <div class="element__content">
+                    <p class="element__text">Гомель</p>
+                    <button class="element__like-button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__img" src="./images/brest.jpg" alt="Brest">
+                <div class="element__content">
+                    <p class="element__text">Брест</p>
+                    <button class="element__like-button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__img" src="./images/grodno.jpg" alt="Grodno">
+                <div class="element__content">
+                    <p class="element__text">Гродно</p>
+                    <button class="element__like-button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__img" src="./images/Vitebsk.jpg" alt="Vitebsk">
+                <div class="element__content">
+                    <p class="element__text">Витебск</p>
+                    <button class="element__like-button"></button>
+                </div>
+            </div>
+        </section>
+
+        <div class="popup page__container">
+            <form class="popup__container">
+                <p class="popup__info">Редактировать профиль</p>
+                <input class="popup__name" type="text">
+                <input class="popup__job" type="text">
+                <button class="popup__save-button">Сохранить</button>
+            </form>
+            <button class="popup__close-button"></button>
+        </div>
+    </main>
+
+    <footer class="footer page__container">
+        <p class="footer__info">&copy; 2020 Mesto Russia</p>
+    </footer>
+
+    <script src="./scripts/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+.header__logo {
+    max-width: 100%;
+    max-height: auto;
+}
+
+@media (max-width: 768px) {
+    .header__logo {
+        padding-left: 50px;
+    }
+}
+
+@media (max-width: 680px) {
+    .header__logo {
+        padding-left: 27px;
+    }
+}
+
+@media (max-width: 320px) {
+    .header__logo {
+        max-width: 104px;
+        max-height: 24px;
+    }
+}

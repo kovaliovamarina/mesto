@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    align-items: flex-start;
+    max-width: calc(100% - 200px * 2);
+    width: 100%;
+    margin-top: 45px;
+    min-height: 74px;
+    border-bottom: 1px solid #545454;
+}
+
+@media (max-width: 1279px) {
+    .header {
+        max-width: calc(100% - 100px * 2);
+    }
+}
+
+@media (max-width: 780px) {
+    .header {
+        max-width: calc(100% - 50px * 2);
+        margin-top: 28px;
+        min-height: 56px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        max-width: 100%;
+    }
+}

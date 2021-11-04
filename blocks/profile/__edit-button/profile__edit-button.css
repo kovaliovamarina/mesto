@@ -1,5 +1,5 @@
 .profile__edit-button {
-    background-image: url('../../../images/edd-button.png');
+    background-image: url('../../../images/Edit.svg');
     background-position: center;
     width: 24px;
     height: 24px;
@@ -9,7 +9,7 @@
     background-repeat: no-repeat;
     align-self: center;
     cursor: pointer;
-    padding: 0;
+    padding: 7px;
     margin-left: 18px;
 }
 

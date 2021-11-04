@@ -2,7 +2,6 @@
     display: flex;
     flex-wrap: wrap;
     max-width: 336px;
-    height: 73px;
     align-self: center;
 }
 
@@ -17,6 +16,5 @@
 @media (max-width: 320px) {
     .profile__data {
         max-width: 282px;
-        height: 54px;
     }
 }

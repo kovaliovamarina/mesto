@@ -1,5 +1,5 @@
 .profile__data-name {
-    width: 294px;
+    max-width: 294px;
     font-style: normal;
     font-weight: 500;
     font-size: 42px;
@@ -14,6 +14,6 @@
     .profile__data-name {
         font-size: 27px;
         line-height: 33px;
-        width: 189px;
+        max-width: 189px;
     }
 }

@@ -1,4 +1,6 @@
 .element__img {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
+    height: 282px;
+    object-fit: cover;
 }

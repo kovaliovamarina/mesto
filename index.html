@@ -28,63 +28,54 @@
 
         <section class="elements page__container">
 
-            <div class="element">
-                <img class="element__img" src="./images/minsk.jpg" alt="Минск">
-                <div class="element__content">
-                    <h2 class="element__text">Минск</h2>
-                    <button class="element__like-button" aria-label="Понравилось" type="button"></button>
+            <template class="template">
+                <div class="element">
+                    <img class="element__img" src="" alt="Картинка">
+                    <button class="element__delete-button" aria-label="Удалить" type="button"></button>
+                    <div class="element__content">
+                        <h2 class="element__text"></h2>
+                        <button class="element__like-button" aria-label="Понравилось" type="button"></button>
+                    </div>
                 </div>
-            </div>
-            <div class="element">
-                <img class="element__img" src="./images/naroch.jpg" alt="Нарочь">
-                <div class="element__content">
-                    <h2 class="element__text">Нарочь, Минская область</h2>
-                    <button class="element__like-button" aria-label="Понравилось" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__img" src="./images/Gomel1.jpg" alt="Гомель">
-                <div class="element__content">
-                    <h2 class="element__text">Гомель</h2>
-                    <button class="element__like-button" aria-label="Понравилось" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__img" src="./images/BrestNew.jpg" alt="Брест">
-                <div class="element__content">
-                    <h2 class="element__text">Брест</h2>
-                    <button class="element__like-button" aria-label="Понравилось" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__img" src="./images/grodno-attractions-sovetskaya-panorama-1.jpg" alt="Гродно">
-                <div class="element__content">
-                    <h2 class="element__text">Гродно</h2>
-                    <button class="element__like-button" aria-label="Понравилось" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__img" src="./images/VitebskNew.jpg" alt="Витебск">
-                <div class="element__content">
-                    <h2 class="element__text">Витебск</h2>
-                    <button class="element__like-button" aria-label="Понравилось" type="button"></button>
-                </div>
-            </div>
+            </template>
+
         </section>
     </main>
     <footer class="footer page__container">
-        <p class="footer__info">&copy; 2020 Mesto Russia</p>
+        <p class="footer__info">&copy; 2021 Mesto Russia</p>
     </footer>
 
-    <div class="popup page__container">
+    <div class="popup page__container" id="popup-edit">
         <div class="popup__container">
             <button class="popup__close-button" aria-label="Закрыть" type="button"></button>
-            <form class="popup__form" name="form">
+            <form class="popup__form" name="formEdit">
                 <h2 class="popup__info">Редактировать профиль</h2>
                 <input class="popup__input popup__input_text_name" type="text" placeholder="Введите данные" name="name" required>
                 <input class="popup__input popup__input_text_job" type="text" placeholder="Введите данные" name="job" required>
                 <button class="popup__save-button" aria-label="Сохранить" type="submit">Сохранить</button>
             </form>
+        </div>
+    </div>
+
+    <div class="popup page__container" id="popup-add">
+        <div class="popup__container">
+            <button class="popup__close-button" aria-label="Закрыть" type="button"></button>
+            <form class="popup__form" name="formCreate">
+                <h2 class="popup__info">Новое место</h2>
+                <input class="popup__input popup__input_text_name-add" type="text" placeholder="Название" name="name" required>
+                <input class="popup__input popup__input_text_link-add" type="text" placeholder="Cсылка на картинку" name="job" required>
+                <button class="popup__save-button" aria-label="Создать" type="submit">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup page__container" id="popup-view">
+        <div class="popup__block">
+            <button class="popup__close-button" aria-label="Закрыть" type="button"></button>
+            <div class="popup__view">
+                <img class="popup__img" src=" " alt="Вы нажали на картинку">
+                <h2 class="popup__title"></h2>
+            </div>
         </div>
     </div>
 

@@ -3,4 +3,5 @@
     border-top-right-radius: inherit;
     height: 282px;
     object-fit: cover;
+    cursor: pointer;
 }

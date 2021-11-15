@@ -1,30 +1,3 @@
-const initialCards = [{
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
-
 //declaration let and const
 const popup = document.querySelector('.popup');
 const popupForm = popup.querySelector('.popup__form');
@@ -58,7 +31,7 @@ const createDomNode = (item) => {
     const divTempate = template.content.querySelector('.element').cloneNode(true);
     divTempate.querySelector('.element__text').textContent = item.name;
     divTempate.querySelector('.element__img').src = item.link;
-
+    divTempate.querySelector('.element__img').alt = 'Картинка ' + item.name;
 
     //Delete template-element
     const deleteButton = divTempate.querySelector('.element__delete-button');
@@ -75,9 +48,11 @@ const createDomNode = (item) => {
     const viewImg = divTempate.querySelector('.element__img');
     const viewInfo = divTempate.querySelector('.element__text');
     viewImg.addEventListener('click', () => {
-        openPopup(viewPopup);
         popupTitle.textContent = viewInfo.textContent;
         popupImg.src = viewImg.src;
+        popupImg.alt = 'Картинка ' + popupTitle.textContent;
+        openPopup(viewPopup);
+
     })
 
     return divTempate;
@@ -91,14 +66,15 @@ const myInitialCards = initialCards.map((item) => {
 function formSubmitHandlerAdd(evt) {
     evt.preventDefault();
 
-    const popupAddName = addPopup.querySelector('.popup__input_text_name-add').value;
-    const popupAddLink = addPopup.querySelector('.popup__input_text_link-add').value;
-    const taskName = createDomNode({ name: popupAddName, link: popupAddLink });
+    const popupAddName = addPopup.querySelector('.popup__input_text_name-add');
+    const popupAddLink = addPopup.querySelector('.popup__input_text_link-add');
+    const taskName = createDomNode({ name: popupAddName.value, link: popupAddLink.value });
 
     ElementsDom.prepend(taskName);
 
-    addPopup.querySelector('.popup__input_text_name-add').value = '';
-    addPopup.querySelector('.popup__input_text_link-add').value = '';
+    popupAddName.value = '';
+    popupAddLink.value = '';
+
     closeForm(addPopup);
 
 }

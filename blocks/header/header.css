@@ -8,7 +8,7 @@
     border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 1200px) {
     .header {
         max-width: calc(100% - 100px * 2);
     }

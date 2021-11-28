@@ -1,0 +1,12 @@
+.popup__form-field {
+    display: flex;
+    flex-direction: column;
+    max-width: calc(100% - 36px * 2);
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .popup__form-field {
+        max-width: calc(100% - 22px * 2);
+    }
+}

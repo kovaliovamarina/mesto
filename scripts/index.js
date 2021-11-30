@@ -1,33 +1,22 @@
 //declaration let and const
 const popup = document.querySelectorAll('.popup');
 const popupForm = document.querySelectorAll('.popup__form');
-const popupInput = document.querySelectorAll('.popup__input');
-
 const editButtonProfile = document.querySelector('.profile__edit-button');
 const addButtonElement = document.querySelector('.profile__add-button');
-
 const editPopup = document.querySelector('.popup_type_profile');
 const addPopup = document.querySelector('.popup_type_card-add');
 const viewPopup = document.querySelector('.popup_type_picture');
-
-const closeButton = document.querySelectorAll('.popup__close-button');
-const saveButtonAdd = document.forms.formCreate;
-const saveButtonEdit = document.forms.formEdit;
-
+const addCardForm = document.forms.formCreate;
+const editProfileForm = document.forms.formEdit;
 const popupNameProfile = formEdit.querySelector('.popup__input_text_name');
 const popupJobProfile = formEdit.querySelector('.popup__input_text_job');
-
 const nameProfile = document.querySelector('.profile__data-name');
 const jobProfile = document.querySelector('.profile__data-job');
-
 const popupImg = document.querySelector('.popup__img');
 const popupTitle = document.querySelector('.popup__title');
-
-const ElementsDom = document.querySelector('.elements');
+const elementsDom = document.querySelector('.elements');
 const viewButtonElement = document.querySelectorAll('.element');
 const template = document.querySelector('.template');
-
-
 const popupError = document.querySelectorAll('.popup__error');
 
 //create template, get and write date in fields per page
@@ -67,53 +56,30 @@ const myInitialCards = initialCards.map((item) => {
 });
 
 //create new element and add element
-function formSubmitHandlerAdd(evt) {
+function submitFormHandlerAdd(evt) {
     evt.preventDefault();
 
     const popupAddName = addPopup.querySelector('.popup__input_text_name-add');
     const popupAddLink = addPopup.querySelector('.popup__input_text_link-add');
     const taskName = createDomNode({ name: popupAddName.value, link: popupAddLink.value });
 
-    ElementsDom.prepend(taskName);
+    elementsDom.prepend(taskName);
 
-    popupAddName.value = '';
-    popupAddLink.value = '';
-
-    closeForm(addPopup);
+    closePopup(addPopup);
 
 }
-saveButtonAdd.addEventListener('submit', formSubmitHandlerAdd);
+addCardForm.addEventListener('submit', submitFormHandlerAdd);
 
-ElementsDom.append(...myInitialCards);
+elementsDom.append(...myInitialCards);
 
 //declaration function open popup 
 function openPopup(popup) {
+
     popup.classList.add('popup_opened');
-    closeEscOrOverlay();
+    closePopupButtonOrOverlay();
+    document.addEventListener('keydown', closeByEscape);
+    resetButton(popup);
 }
-
-function closeEscOrOverlay() {
-    document.addEventListener('keydown', (evt) => {
-        if (evt.key === 'Escape') {
-            popup.forEach((elem) => {
-                elem.classList.remove('popup_opened');
-            })
-        }
-    })
-    popup.forEach((evt) => {
-        evt.addEventListener('click', (elem) => {
-            elem.target.classList.remove('popup_opened');
-
-        })
-    })
-}
-
-editButtonProfile.addEventListener('click', function() {
-    resetFormPopup();
-    editForm();
-    enableValidation(Validation);
-    openPopup(editPopup);
-});
 
 //declaration function for clear form error
 function cleanError(popupError) {
@@ -123,15 +89,6 @@ function cleanError(popupError) {
     })
 };
 
-addButtonElement.addEventListener('click', function() {
-    resetFormPopup();
-    openPopup(addPopup);
-});
-
-//declaration function close popup 
-function closeForm(elem) {
-    elem.classList.remove('popup_opened');
-}
 // declaration function reset data form
 function resetFormPopup() {
     popupForm.forEach((evt) => {
@@ -140,30 +97,67 @@ function resetFormPopup() {
     });
 }
 
-// close popup with button
-closeButton.forEach(function(elem) {
-    elem.addEventListener('click', function(evt) {
-        evt.target.closest('.popup').classList.remove('popup_opened');
+function resetButton() {
+    popupForm.forEach((elem) => {
+        const popupButton = elem.querySelector('.popup__button');
+        toggleButtonState(elem, popupButton, validation.inactiveButtonClass);
+    })
+}
+//declaration function close popup 
+function closePopup(elem) {
+    elem.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeByEscape);
+    resetFormPopup(elem);
+}
 
-    });
-})
+//declaration function close popup with escape
+function closeByEscape(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
+
+// declaration function close popup with buttonClose and overlay
+function closePopupButtonOrOverlay() {
+    popup.forEach((popup) => {
+        popup.addEventListener('click', (evt) => {
+            if (evt.target.classList.contains('popup_opened')) {
+                closePopup(popup)
+            }
+            if (evt.target.classList.contains('popup__close-button')) {
+                closePopup(popup)
+            }
+        })
+    })
+};
+
+editButtonProfile.addEventListener('click', function() {
+    editForm(editPopup);
+    openPopup(editPopup);
+});
+
+addButtonElement.addEventListener('click', function() {
+    openPopup(addPopup);
+
+});
 
 // declaration function reading data the popup for edit
 function editForm() {
 
     popupNameProfile.value = nameProfile.textContent;
     popupJobProfile.value = jobProfile.textContent;
-
 }
+
 //write data in profile
-function formSubmitHandlerEdit(evt) {
+function submitFormHandlerEdit(evt) {
     evt.preventDefault();
 
     nameProfile.textContent = popupNameProfile.value;
     jobProfile.textContent = popupJobProfile.value;
 
-    closeForm(editPopup);
+    closePopup(editPopup);
 
 }
-saveButtonEdit.addEventListener('submit', formSubmitHandlerEdit);
-enableValidation(Validation);
+editProfileForm.addEventListener('submit', submitFormHandlerEdit);
+enableValidation(validation);

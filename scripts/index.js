@@ -76,9 +76,7 @@ elementsDom.append(...myInitialCards);
 function openPopup(popup) {
 
     popup.classList.add('popup_opened');
-    closePopupButtonOrOverlay();
     document.addEventListener('keydown', closeByEscape);
-    resetButton(popup);
 }
 
 //declaration function for clear form error
@@ -107,7 +105,6 @@ function resetButton() {
 function closePopup(elem) {
     elem.classList.remove('popup_opened');
     document.removeEventListener('keydown', closeByEscape);
-    resetFormPopup(elem);
 }
 
 //declaration function close popup with escape
@@ -133,11 +130,15 @@ function closePopupButtonOrOverlay() {
 };
 
 editButtonProfile.addEventListener('click', function() {
+    resetFormPopup(editPopup);
     editForm(editPopup);
+    resetButton(editPopup);
     openPopup(editPopup);
 });
 
 addButtonElement.addEventListener('click', function() {
+    resetFormPopup(addPopup);
+    resetButton(addPopup);
     openPopup(addPopup);
 
 });
@@ -160,4 +161,5 @@ function submitFormHandlerEdit(evt) {
 
 }
 editProfileForm.addEventListener('submit', submitFormHandlerEdit);
+closePopupButtonOrOverlay();
 enableValidation(validation);

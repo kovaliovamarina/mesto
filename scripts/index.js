@@ -9,6 +9,8 @@ export const addCardForm = document.forms.formCreate;
 export const editProfileForm = document.forms.formEdit;
 const popupNameProfile = formEdit.querySelector('.popup__input_text_name');
 const popupJobProfile = formEdit.querySelector('.popup__input_text_job');
+const popupAddName = addPopup.querySelector('.popup__input_text_name-add');
+const popupAddLink = addPopup.querySelector('.popup__input_text_link-add');
 const nameProfile = document.querySelector('.profile__data-name');
 const jobProfile = document.querySelector('.profile__data-job');
 export const popupImg = document.querySelector('.popup__img');
@@ -19,12 +21,15 @@ export const popupError = document.querySelectorAll('.popup__error');
 import { validation, FormValidator } from './FormValidate.js'
 import { initialCards, Card } from './Card.js'
 
+function createCard(elem) {
+    const card = new Card(elem, '.template');
+    const cardElement = card.generateCard();
+    return cardElement;
+}
+
 const render = (initialCards, elementsDom) => {
     initialCards.forEach((element) => {
-        const card = new Card(element, '.template');
-        const cardElement = card.generateCard();
-
-        elementsDom.append(cardElement);
+        elementsDom.append(createCard(element));
     });
 }
 
@@ -60,15 +65,14 @@ function closePopupButtonOrOverlay() {
 };
 
 editButtonProfile.addEventListener('click', function() {
-    validationProfileForm.resetFormPopup();
-    editForm(editPopup);
-    validationProfileForm._toggleButtonState();
+    editForm();
+    validationProfileForm.resetValidation();
     openPopup(editPopup);
 });
 
 addButtonElement.addEventListener('click', function() {
-    validationAddForm.resetFormPopup();
-    validationAddForm._toggleButtonState();
+    addCardForm.reset();
+    validationAddForm.resetValidation();
     openPopup(addPopup);
 
 });
@@ -93,17 +97,11 @@ function submitFormHandlerEdit(evt) {
 function submitFormHandlerAdd(evt) {
     evt.preventDefault();
 
-    const popupAddName = addPopup.querySelector('.popup__input_text_name-add');
-    const popupAddLink = addPopup.querySelector('.popup__input_text_link-add');
-
-    const card = new Card({ name: popupAddName.value, link: popupAddLink.value }, '.template');
-    const cardElement = card.generateCard();
-
-    elementsDom.prepend(cardElement);
-
+    elementsDom.prepend(createCard({ name: popupAddName.value, link: popupAddLink.value }));
     closePopup(addPopup);
-
 }
+
+
 
 addCardForm.addEventListener('submit', submitFormHandlerAdd);
 editProfileForm.addEventListener('submit', submitFormHandlerEdit);

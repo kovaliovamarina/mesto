@@ -46,9 +46,11 @@ export class Card {
     generateCard() {
         this._element = this._getTemplate();
 
-        this._element.querySelector('.element__img').src = this._link;
+        this._image = this._element.querySelector('.element__img');
+        this._likeButton = this._element.querySelector('.element__like-button');
+        this._image.src = this._link;
         this._element.querySelector('.element__text').textContent = this._name;
-        this._element.querySelector('.element__text').alt = this._name;
+        this._image.alt = this._name;
 
         this._setEventListeners();
 
@@ -60,13 +62,13 @@ export class Card {
     }
 
     _handleLikePopup() {
-        this._element.querySelector('.element__like-button').classList.toggle('element__like-button_active');
+        this._likeButton.classList.toggle('element__like-button_active');
     }
 
     _handleViewImg() {
         popupImg.src = this._link;
         popupTitle.textContent = this._name;
-        popupImg.alt = 'Картинка ' + popupTitle.textContent;
+        popupImg.alt = popupTitle.textContent;
         openPopup(viewPopup);
     }
 
@@ -74,10 +76,11 @@ export class Card {
         this._element.querySelector('.element__delete-button').addEventListener('click', () => {
             this._handleDeletePopup();
         });
-        this._element.querySelector('.element__like-button').addEventListener('click', () => {
+
+        this._likeButton.addEventListener('click', () => {
             this._handleLikePopup();
         });
-        this._element.querySelector('.element__img').addEventListener('click', () => {
+        this._image.addEventListener('click', () => {
             this._handleViewImg();
         });
     }

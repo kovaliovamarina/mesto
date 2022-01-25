@@ -3,8 +3,11 @@ export const addButtonElement = document.querySelector('.profile__add-button');
 export const editPopup = document.querySelector('.popup_type_profile');
 export const addPopup = document.querySelector('.popup_type_card-add');
 export const viewPopup = document.querySelector('.popup_type_picture');
+export const deletePopup = document.querySelector('.popup_type_delete');
+export const avatarPopup = document.querySelector('.popup_type_avatar');
 export const addCardForm = document.forms.formCreate;
 export const editProfileForm = document.forms.formEdit;
+export const editAvatarForm = document.forms.formAvatar;
 export const popupNameProfile = formEdit.querySelector('.popup__input_text_name');
 export const popupJobProfile = formEdit.querySelector('.popup__input_text_job');
 export const popupAddName = addPopup.querySelector('.popup__input_text_name-add');
@@ -14,32 +17,10 @@ export const jobProfile = document.querySelector('.profile__data-job');
 export const popupImg = document.querySelector('.popup__img');
 export const popupTitle = document.querySelector('.popup__title');
 export const elementsDom = document.querySelector('.elements');
-
-export const initialCards = [{
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+export const avatar = document.querySelector('.profile__photo');
+export const avatarPopupInput = document.querySelector('.popup__input_text_link-avatar');
+export const token = '37fe7dee-eecf-45fa-a2c0-beeee86375ae';
+export const url = 'https://mesto.nomoreparties.co/v1/cohort-34';
 
 export const validation = ({
     formSelector: '.popup__form',

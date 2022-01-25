@@ -10,6 +10,8 @@
     align-self: end;
     width: 18px;
     height: 19px;
+    /* display: none; */
+    visibility: hidden;
 }
 
 .element__delete-button:hover {

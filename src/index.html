@@ -17,9 +17,9 @@
             <div class="profile__info">
                 <div class="profile__photo"></div>
                 <div class="profile__data">
-                    <h1 class="profile__data-name">Жак-Ив Кусто</h1>
+                    <h1 class="profile__data-name"></h1>
                     <button class="profile__edit-button" aria-label="Редактировать" type="button"></button>
-                    <p class="profile__data-job">Исследователь океана</p>
+                    <p class="profile__data-job"></p>
                 </div>
             </div>
             <button class="profile__add-button" aria-label="Добавить" type="button"></button>
@@ -72,13 +72,36 @@
             </div>
         </div>
     </div>
-    <template class="template">
-        <div class="element">
-            <img class="element__img" src="#" alt>
-            <button class="element__delete-button" aria-label="Удалить" type="button"></button>
-            <div class="element__content">
-                <h2 class="element__text"></h2>
-                <button class="element__like-button" aria-label="Понравилось" type="button"></button>
+    <div class="popup popup_type_delete page__container">
+        <div class="popup__container">
+            <button class="popup__close-button" aria-label="Закрыть" type="button"></button>
+            <form class="popup__form">
+                <h2 class="popup__info">Вы уверены?</h2>
+                <button class="popup__button popup__button_confirm" aria-label="Да" type="submit ">Да</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup_type_avatar page__container">
+        <div class="popup__container">
+            <button class="popup__close-button" aria-label="Закрыть" type="button"></button>
+            <form class="popup__form" name="formAvatar">
+                <h2 class="popup__info">Обновить аватар</h2>
+                <input class="popup__input popup__input_text_link-avatar" id="url" type="url" placeholder="Адрес картинки" name="avatar" required>
+                <span class="popup__error" id="url-error">Введите адрес картинки.</span>
+                <button class="popup__button" aria-label="Сохранить" type="submit" disabled>Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <template class="template ">
+        <div class="element ">
+            <img class="element__img " src="# " alt>
+            <button class="element__delete-button" aria-label="Удалить " type="button "></button>
+            <div class="element__content ">
+                <h2 class="element__text "></h2>
+                <div class="element__like">
+                    <button class="element__like-button " aria-label="Понравилось " type="button "></button>
+                    <p class="element__like-number">0</p>
+                </div>
             </div>
         </div>
     </template>

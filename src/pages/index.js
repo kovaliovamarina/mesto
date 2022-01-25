@@ -88,7 +88,7 @@ const editAvatarSubmit = (evt) => {
     api.setUserAvatar(avatarPopupInput.value)
         .then(res => {
             userProfile.setUserAvatar({ avatar: res.avatar });
-            console.log({ avatar: res.avatar });
+            // console.log({ avatar: res.avatar });
             avatarEdit.close();
         })
         .catch((err) => {

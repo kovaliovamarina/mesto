@@ -51,16 +51,18 @@ const userProfile = new UserInfo({
 const setProfile = (evt) => {
     evt.preventDefault();
     // debugger
+    editProfileFormPopup.dataLoading(true);
     api.setProfile(popupNameProfile.value, popupJobProfile.value)
         .then(res => {
             userProfile.setUserInfo(res.name, res.about);
-            // console.log(res.name);
             editProfileFormPopup.close();
         })
         .catch((err) => {
             console.log(`Ошибка обновления пользовательских данных:` + err);
         })
-
+        .finally(() => {
+            editProfileFormPopup.dataLoading(false);
+        })
 }
 
 const addCardSubmit = (evt) => {
@@ -88,7 +90,6 @@ const editAvatarSubmit = (evt) => {
     api.setUserAvatar(avatarPopupInput.value)
         .then(res => {
             userProfile.setUserAvatar({ avatar: res.avatar });
-            // console.log({ avatar: res.avatar });
             avatarEdit.close();
         })
         .catch((err) => {
@@ -146,6 +147,7 @@ function createCard(elem) {
                     // debugger;
                     api.setLikes(elem._id)
                         .then(res => {
+                            card.handleLikePopup();
                             card.totalLikes(res.likes.length);
                             card.statusLike();
                         })
@@ -155,6 +157,7 @@ function createCard(elem) {
                 } else {
                     api.removeLikes(elem._id)
                         .then(res => {
+                            card.handleLikePopup();
                             card.totalLikes(res.likes.length);
                             card.statusLike();
                         })
@@ -188,16 +191,6 @@ avatar.addEventListener('click', function() {
     avatarEdit.open();
 });
 
-// загрузка карточек с сервера
-api.getInitialCards()
-    .then(res => {
-        cardList.renderer(res);
-        // console.log(res);
-    })
-    .catch((err) => {
-        console.log(`Ошибка загрузки карточек:` + err);
-    });
-
 // Загрука инф о пользователе с сервера
 api.getUserInfo()
     .then((res) => {
@@ -208,6 +201,17 @@ api.getUserInfo()
     .catch((err) => {
         console.log(`Ошибка загрузки пользовательских данных:` + err);
     });
+
+// загрузка карточек с сервера
+api.getInitialCards()
+    .then(res => {
+        cardList.renderer(res);
+        // console.log(res);
+    })
+    .catch((err) => {
+        console.log(`Ошибка загрузки карточек:` + err);
+    });
+
 
 editProfileFormPopup.setEventListeners();
 addCardFormPopup.setEventListeners();

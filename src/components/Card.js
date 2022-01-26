@@ -55,6 +55,7 @@ export default class Card {
     delete() {
         // debugger
         this._element.remove();
+        this._element = null;
     }
     statusLike() {
         this._isLike = !this._isLike;
@@ -65,7 +66,7 @@ export default class Card {
 
     }
 
-    _handleLikePopup() {
+    handleLikePopup() {
         this._likeButton.classList.toggle('element__like-button_active');
     }
 
@@ -76,8 +77,6 @@ export default class Card {
         });
 
         this._likeButton.addEventListener('click', () => {
-            this._handleLikePopup();
-            // debugger
             this._handleLikeClick();
 
         });
